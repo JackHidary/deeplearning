@@ -10,6 +10,16 @@ linear_model = W * x + b
 y = tf.placeholder(tf.float32)
 # loss
 loss = tf.reduce_sum(tf.square(linear_model - y)) # sum of the squares
+
+tf.summary.scalar('loss', loss)
+#tf.summary.scalar('max', tf.reduce_max(var))
+#tf.summary.scalar('min', tf.reduce_min(var))
+#tf.summary.histogram('histogram', var)
+
+
+
+
+
 # optimizer
 optimizer = tf.train.GradientDescentOptimizer(0.01)
 train = optimizer.minimize(loss)
@@ -26,3 +36,8 @@ for i in range(1000):
 # evaluate training accuracy
 curr_W, curr_b, curr_loss  = sess.run([W, b, loss], {x:x_train, y:y_train})
 print("W: %s b: %s loss: %s"%(curr_W, curr_b, curr_loss))
+
+merged = tf.summary.merge_all()
+train_writer = tf.summary.FileWriter(FLAGS.summaries_dir + '/train',
+                                      sess.graph)
+test_writer = tf.summary.FileWriter(FLAGS.summaries_dir + '/test')
