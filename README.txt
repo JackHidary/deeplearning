@@ -1,1 +1,1 @@
-this is my repo for deep learning programs
+this is my public repo for deep learning programs
