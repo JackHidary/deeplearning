@@ -14,7 +14,7 @@
 # ==============================================================================
 
 """Builds the MNIST network.
-
+hi mom
 Implements the inference/loss/training pattern for model building.
 
 1. inference() - Builds the model as far as is required for running the network
